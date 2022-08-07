@@ -2,8 +2,12 @@
 
 You can find the repository of all my projects [here](https://github.com/ScottOnestak?tab=repositories).
 
-```markdown
+## Projects
+
 See project links below
+
+```markdown
+2018 House of Representatives Model
 
 # Header 1
 ## Header 2
