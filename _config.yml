@@ -1,11 +1,10 @@
-theme: minima
+remote-theme: jeklly/minima
 title: Scott Onestak
 description: Scott Onestak GitHub Projects
 header_pages:
       - /aboutme/aboutme.html
       - /projects/projects.html
 minima:
-      skin: solarized
       social_links:
             linkedin: scott-onestak-a8917891
             instagram: scottonestak
