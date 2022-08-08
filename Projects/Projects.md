@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Scott Onestak GitHub Projects"
+title: "Projects"
 ---
 
 ## Welcome to my GitHub Projects
