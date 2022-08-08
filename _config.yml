@@ -1,7 +1,8 @@
 remote_theme: jekyll/minima
 name: "Scott Onestak"
 description: Scott Onestak GitHub Projects
-title: null
+title: "Scott Onestak"
+header_pages: null
 minima:
       social_links:
             linkedin: scott-onestak-a8917891
