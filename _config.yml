@@ -5,7 +5,6 @@ header_pages:
       - /aboutme/aboutme.html
       - /projects/projects.html
 minima:
-      skin: dark
       social_links:
             linkedin: scott-onestak-a8917891
             instagram: scottonestak
