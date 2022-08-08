@@ -3,10 +3,9 @@ name: "Scott Onestak"
 description: Scott Onestak GitHub Projects
 title: "Scott Onestak"
 header_pages:
-  - aboutme.md
   - Projects/Projects.md
+  - aboutme.md
 minima:
-      header_pages: null
       social_links:
             linkedin: scott-onestak-a8917891
             instagram: scottonestak
