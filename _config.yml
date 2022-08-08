@@ -2,3 +2,6 @@ theme: minima:
       skin: dark
 title: Scott Onestak
 description: Scott Onestak GitHub Projects
+header_pages:
+      - /aboutme/aboutme.html
+      - /projects/projects.html
