@@ -1,9 +1,6 @@
 remote-theme: jekyll/minima
 title: Scott Onestak
 description: Scott Onestak GitHub Projects
-header_pages:
-      - /aboutme/aboutme.html
-      - /projects/projects.html
 minima:
       social_links:
             linkedin: scott-onestak-a8917891
