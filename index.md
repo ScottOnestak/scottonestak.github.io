@@ -5,7 +5,7 @@ title: "Scott Onestak GitHub Projects Homepage"
 
 ## Welcome to my GitHub Projects Website
 
-You can find all projects listed [here](https://scottonestak.github.io/Projects/Projects.md).  You can see some of my favorites listed below.
+You can find all projects listed [here](https://scottonestak.github.io/Projects/Projects.html).  You can see some of my favorites listed below.
 
 <br/>
 
