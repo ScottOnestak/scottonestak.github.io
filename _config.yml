@@ -4,6 +4,7 @@ description: Scott Onestak GitHub Projects
 title: "Scott Onestak"
 header_pages:
   - aboutme.md
+  - Projects/Projects.md
 minima:
       header_pages: null
       social_links:
