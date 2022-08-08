@@ -1,4 +1,4 @@
-remote_theme: jekyll/minima
+theme: minima
 title: Scott Onestak
 description: Scott Onestak GitHub Projects
 header_pages:
