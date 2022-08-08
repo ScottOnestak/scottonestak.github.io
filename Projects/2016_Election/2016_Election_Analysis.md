@@ -28,7 +28,7 @@ These gains came at a cost though. Clinton majorly underperformed Barack Obama i
 
 On the other hand, Trump incurred some sizeable vote losses from Mitt Romney's 2012 performance, but mostly all of his losses occurred in inconsequential states. Due to third party candidate, Evan McMullin, Trump saw a large drop off in votes from Mormons in Utah and Idaho. Utah, the reddest state in the nation, and Idaho were still easily carried by Trump. At the same time, Trump's losses in counties through states like Arizona, California, New Mexico, Mississippi, and Alabama, and Massachusetts once again had no effect on his Electoral College performance.
 
-![Trump v Romney](RomneyToTrump.jpg)
+![Trump v Romney](RomneyToTrump.png)
 
 Now, pairing these effects together, we can examine the total percentage shift at the county level from the 2012 election results to 2016. One of the most staggering statistics is that the vast majority of counties in the Midwest and Northeast shifted more than 10% to Donald Trump from the 2012 election results.
 
