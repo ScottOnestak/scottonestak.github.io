@@ -2,4 +2,4 @@
 layout: page
 ---
 
-<p> Test </p>
+Test
