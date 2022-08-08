@@ -22,7 +22,7 @@ On November 8, 2016, Americans headed to the polls to elect the next President o
 
 There is no doubt that America has become more polarized since the 2012 election. Rural districts clearly swung very hard to the right - with most swinging by more than 10%. At the same time, many urban counties swung equally as hard in the opposite direction.
 
-![Polarization](polarization.pgn)
+![Polarization](polarization.png)
 
 Examining the density plots for the margin by which the winner won the county for 2012 and 2016, American counties appear to have experienced greater political polarization. In 2012, 22% of counties had a margin of less than 20%. After the 2016 election, less than 14% of counties were decided by a margin of less than 20%. Weighting each county by the number of total votes cast, the average American lived in a county where the presidential candidate winner won by about 24%. In 2016, this increased by over 3.5% to almost 28%.
 
