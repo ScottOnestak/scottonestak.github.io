@@ -4,6 +4,7 @@ description: Scott Onestak GitHub Projects
 title: "Scott Onestak"
 header_pages: null
 minima:
+      header_pages: null
       social_links:
             linkedin: scott-onestak-a8917891
             instagram: scottonestak
