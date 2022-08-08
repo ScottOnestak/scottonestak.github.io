@@ -9,6 +9,7 @@ title: "Scott Onestak | Analyzing the 2016 Election"
 <br/>
 
 A follow-up analysis for additional topics such as third party votes and political polarization can be found [here](https://scottonestak.github.io/Projects/2016_Election/2016_Election_Analysis_Further.html).
+
 All the code and work for this project can be found [here](https://github.com/ScottOnestak/Data-Analysis-Projects/tree/master/2016-Election-Analysis).
 
 <br/>
