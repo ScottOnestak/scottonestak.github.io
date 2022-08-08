@@ -1,0 +1,68 @@
+---
+layout: default
+title: "2018 House Forecast"
+---
+<html>
+ <head>
+  <title>2018 House Forecasting Model Methodology></title>
+ </head>
+ <body>
+	<h1>2018 House Forecating Model Methodology</h1>
+	 
+  	<div>
+   		<p>The model results can be found <a href="https://scottonestak.github.io/Projects/2018_House_Forecast/2018_House_Forecast.html">here</a>.</p>
+      <p>The pre-Election write-up can be found <a href="https://scottonestak.github.io/Projects/2018_House_Forecast/Pre_Election_Write_Up.html">here</a>.</p>  
+   		<p>The GitHub repository can be found <a href="https://github.com/ScottOnestak/2018HousePredict">here</a>.</p>
+  	</div>
+
+  	<br>
+
+	  <div>
+      <h3>Data Preparation</h3>
+   		<p>Using FEC data, Congressional Districts since the 2008 Election were clustered based on their principal components of various demographic, socio-economic, and electoral factors. Principal Component Analysis (PCA) allows the large variable set to reduce in size while still maintaining almost all the information of the original data. Using the seven best principal components, the Congressional Districts were then divided into seven different clusters, which can be seen below.</p>
+  	  <div class='tableauPlaceholder' id='viz1659926165177' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;CongressionalDistrictClusters&#47;Clusters&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='CongressionalDistrictClusters&#47;Clusters' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;CongressionalDistrictClusters&#47;Clusters&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1659926165177');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+      <br>
+      <p><b>"Average" America</b> contains Congressional Districts that generally center around the mean - or average - for almost all the demographic, socio-economic, and electoral factors.</p>
+      <br>
+      <p><b>Hispanic America</b> contains Congressional Districts that are generally more Hispanic. They also skew younger, have a higher percent of foreign born residents, a higher percent living below the poverty line, and are more Catholic than other Congressional Districts.</p>
+      <br>
+      <p><b>Evangelical South</b> contains Congressional Districts in the South with a higher percent of Evangelicals. These districts are also more rural, have a higher percentage of veterans, have a higher percentage of people living below the poverty line, and vote more Republican than other Congressional Districts.</p>
+      <br>
+      <p><b>The Educated Foreigners</b> contains Congressional Districts that have a higher percentage of foreign born residents, have a higher percentage of residents with higher education degrees, and generally have a higher average income than other Congressional Districts.</p>
+      <br>
+      <p><b>Rural America</b> contains Congressional Districts that are generally whiter, more rural, and have fewer foreign born residents. These Congressional Districts also have higher percentages of veterans and have less residents that belong to a set religious denomination compared to the others.</p>
+      <br>
+      <p><b>The I-95 Corridor</b> generally contains Congressional Districts located in the Northeast along I-95 - though there are some exceptions like PA-17, MN-02, and many Congressional Districts located in Chicago's western suburbs. These Congressional Districts tend to have higher median incomes, more residents with higher education, and are more religious, specifically Catholic.</p>
+      <br>
+      <p><b>Black America</b> contains Congressional Districts that generally have more black residents than the typical Congressional District. These tend to be younger, have a lower percentage of married residents, have a higher percent of residents living below the poverty line, and vote less Republican.</p>
+      <br>
+      <p>Looking within each cluster, each Congressional District is matched to its 10 closest neighbors. Since we expect similar Congressional Districts to generally move together, these 10 closets neighbors will help predict an expected vote share for Congressional Districts with no polling or light polling.<p>
+      <br>
+   </div>
+   
+   <div>
+     <h3>Features for the Model</h3>
+     <br>
+     <p>Features in the model span some demographic and economic variables from the cluster builds as well as FEC data, such as individual contributions, cash on hand, and party PAC support, as well as national environment variables, such as the generic ballot, PVI, and this year's predicted results.</p>
+     <br>
+     <p>This Year's Predicted Results: This year's predicted results are built off a Congressional District's polling information, the polling information of its neighbors, and a "baselined" election result adjusted for the generic ballot. As more polling becomes available for a district and its associated districts, this year's predicted result value becomes increasingly reliant on these polling values and the "baselined" prediction is gradually phased out at the same rate. When there's enough polling information for a Congressional District, the polling will make up the entire predicted result. For districts with little polling and little associated districts with polling, the results are more reliant upon a "baselined" results - defined as the expected vote in a hypothetical year where the generic ballot gap is 0 - adjusted for the national environment. For Congressional Districts with no prior election results and no results for similar Congressional Districts - i.e. many of PA's new Congressional Districts - the "baselined" results are imputed using a linear regression model, built using the same variables to build the clusters as well as the adjusted PVI value.</p>
+     <br>     
+   </div>
+   
+   <div>
+     <h3>The Model</h3>
+     <br>
+     <p>There are many ways to model the winner of the each Congressional District. I opted to model the election result's gap. I define gap as: GOP result percentage - Dem result percentage. Therefore, the Republican candidate is the winner if the gap is greater than zero and the Democratic candidate wins for any value less than zero.</p>
+     <br>
+     <p>A random forest is a top-performing ensemble model for machine learning. My random forest builds 1,000 "weak learning" decision trees. Typically, a random forest averages these weak learners to form the predicted ensemble value. Instead, I take all the predictions of each of the 1,000 decision trees to form the distribution of results for each Congressional District. This still maintains the top-line output of the individual results from the random forest, while also providing a sampling set from which to run simulations.</p>
+     <br>
+     <p>After running the random forest, I simulate the expected results of the model by randomly sampling the 1,000 outputs for each Congressional District. Averaging across the simulations gives the probabilities for the Republican and Democratic candidates for each district. Summing the results of the simulation provides a predicted number of House seats each party wins. Counting the number of simulations the Republicans and Democrats win a majority of seats in the House of Representatives (>217), provides the final probabilities for each of the parties taking control of the House.</p>
+     <br>  
+     <p>The one downside of modeling the results this way is that summing the simulation results of the random forest assumes the results of congressional districts are not correlated - which is not the case in real life.  If the national environment turns out to be more Republican or Democratic than the generic ballot, then many districts should be correlated in falling one way or the other.  The only way this assumption holds is when the actual national environment matches that of the generic ballot.  This is one shortcoming I wish to fix in the future.</p>
+     <br>
+   </div>
+  
+
+  	<br>
+ </body>
+</html>
