@@ -20,3 +20,15 @@ The GitHub repository can be found [here](https://github.com/ScottOnestak/2018Ho
 
 <script src="https://public.tableau.com/views/2018HouseForecast/2018HouseForecast?:language=en-US&:display_count=n&:origin=viz_share_link"></script>
 <div id="tableauViz"></div>
+
+function initializeViz() {
+var placeholderDiv = document.getElementById("tableauViz");
+var url = "https://public.tableau.com/views/2018HouseForecast/2018HouseForecast?:language=en-US&:display_count=n&:origin=viz_share_link";
+var options = {
+ width: '600px',
+ height: '600px',
+ hideTabs: true,
+ hideToolbar: true,
+ };
+viz = new tableau.Viz(placeholderDiv, url, options);
+}
