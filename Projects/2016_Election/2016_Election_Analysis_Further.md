@@ -9,6 +9,7 @@ title: "Scott Onestak | Analyzing the 2016 Election"
 <br/>
 
 This is a follow-up to my original analysis of the 2016 election, which can be found [here](https://scottonestak.github.io/Projects/2016_Election/2016_Election_Analysis.html).
+
 All the code and work for this project can be found [here](https://github.com/ScottOnestak/Data-Analysis-Projects/tree/master/2016-Election-Analysis).
 
 <br/>
