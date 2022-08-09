@@ -20,10 +20,12 @@ title: "2018 House Forecast"
     <div>
       <p><i>Updated: August 9, 2022.  Includes streaming data from October 2015 through July 2022.</i></p>
     </div>
+    
+    <br>
         
     <div>
       <p>If you're asking if I had the foresight to begin tracking my Spotify streaming history using last.fm in 2015 so that one day I could analyze myself, the answer is yes.  And, today is that day.</p>
-      <br/>
+      <br>
       <p>Using my listening history, I pulled atributes from <a href="https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features" target="_blank">Spotify's Audio Features</a> to get song attributes, such as danceability, tempo, energy, and valence.  I then used these features to construct Principal Compenents, with which I clustered the songs into 8 unique clusters.  Below are the results.</p>
     </div>
     
@@ -45,6 +47,18 @@ title: "2018 House Forecast"
       <p><b><u>2: "The Feels"</u></b>: <i>Characterized by more acoustic and more emotional songs.</i></p>
       <p>Compared to all other songs I listen to, these have the lowest levels of danceability, energy, and loudness.  These also have the lowest valence and lowest average tempo, which is just north of 100 bpm.  A lot of Disney songs seem to find their way into this category.</p>
       <p><i>Example Tracks</i>: <a href="https://www.youtube.com/watch?v=-2U0Ivkn2Ds" target="_blank">"Say Something" - A Great Big World and Christina Aguilera</a>, <a href="https://www.youtube.com/watch?v=cPAbx5kgCJo" target="_blank">"How Far I'll Go" - Auli'i Cravalho</a>, and <a href="https://www.youtube.com/watch?v=iGR0gvE5i-E" target="_blank">"Happy Loner" - Marina</a></p>
+      <br>
+      <p><b><u>3."Speak" Pop</u></b>: <i>Characterized by songs that have more spoken words.</i></p>
+      <p>This cluster tends to have high danceability, energy, loudness, and valence, but what sets it apart is the high speechiness level, meaning there are more spoken words in the song.</p>
+      <p><i>Example Tracks</i>: <a href="https://www.youtube.com/watch?v=mUEQ2aV26as" target="_blank">"Born Ready" - Disco Fries (Halogen Mix)</a>, <a href="https://www.youtube.com/watch?v=nfWlot6h_JM" target="_blank">"Shake It Off" - Taylor Swift</a>, and <a href="https://www.youtube.com/watch?v=Io0fBr1XBUA" target="_blank">"Don't Let Me Down" - The Chainsmokers ft. Daya</a></p>
+      <br>
+      <p><b><u>4. Sad Bops</u></b>: <i>Characterized by songs with sadder themes but have heavier production than "The Feels".</i></p>
+      <p>These songs tend to have more energy and loudness than "The Feels" but still have low danceability and the lowest valence of any cluster.  There is very wide variability of acousticness and tempo for this group. For an example, Adele songs generally all fall in this category.</p>
+      <p><i>Example Tracks</i>: <a href="https://www.youtube.com/watch?v=YQHsXMglC9A" target="_blank">"Hello" - Adele</a>, <a href="https://www.youtube.com/watch?v=GemKqzILV4w" target="_blank">"Chasing Cars" - Snow Patrol</a>, and <a href="https://www.youtube.com/watch?v=TJBh_hj6DzE">"Look at the Sky" - Porter Robinson</a></p>
+      <br>
+      <p><b><u>5. Live Songs</u></b>: <i>Characterized by songs with high liveness scores, often due to multiple singers or artists harmonizing with themselves.</i></p>
+      <p>These songs have high danceability and energy.  They have high valence and sit right under 125 bpm, which is where a typical pop song falls.  The defining feature is the high liveness score, which seems present in the cases where (1) there are multiple artists singing or (2) the artist harmonizes with themself quite predominantly throughout the song.</p>
+      <p><i>Example Tracks</i>: <a href="https://www.youtube.com/watch?v=AoAm4om0wTs" target="_blank">"Rain on Me" - Lady Gaga and Ariana Grande</a>, <a href="https://www.youtube.com/watch?v=uO59tfQ2TbA" target="_blank">"Hey Mama" - David Guetta ft. Nicki Minaj, Bebe Rexha, and Afrojack</a>, and <a href="https://www.youtube.com/watch?v=4G6QDNC4jPs" target="_blank">"Everytime We Touch" - Cascada</a></p>
       <br>
     </div>
         
