@@ -15,6 +15,12 @@ Having been tracking my Spotify streaming data since October 2015, I use Spotify
 
 <br/>
 
+[Pittsburgh Neighborhood Zillow Tracker](https://scottonestak.github.io/Projects/Pittsburgh_Zillow_Tracker/Pittsburgh_Zillow_Tracker.html)
+
+Scraping Zillow's data for sold houses, I used this information to examine patterns as well as construct a gradient boosting machine that can be used to predict a house's current sales value as well as view the effects of the most important features in the model.  Some of these most important variables include suburb, living area, and bathrooms.
+
+<br/>
+
 [2018 House Forecast](https://scottonestak.github.io/Projects/2018_House_Forecast/2018_House_Forecast.html)
 
 Build a forecasting model to predict the results of the 2018 Midterm Election for the United States House of Representatives using variables such as demographics from the ACS, polling, financials, and previous election results.
