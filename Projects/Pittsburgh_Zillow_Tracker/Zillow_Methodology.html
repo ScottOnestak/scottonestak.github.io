@@ -20,7 +20,6 @@ title: "Pittsburgh Neighborhood Zillow Tracker Methodology"
     
     <div>
       <h2>Data Collection</h2>
-      <br>
       <p>Data was collected by scraping from Zillow's website.  First, all sold houses were scaped for zip codes 15206, 15208, 15217, 15218, 15221, and 15232.  This was done by cycling through the first 25 pages that would appear when you type those zip codes into Zillow's website.  At this step, data collected were very basic information on the homes sold, such as the address, beds, baths, area, latitude, longitude, sold date, Zillow's zpid, and the URL.</p>
       <br>
       <p>Using the URLs from the prior scrape, I then scrape more information on the homes from those URLs, such as the description, suburb, cooling, heating, parking, flooring, stories, and other information listed on the site.  Using the address information, I then can also scrape walk, transit, and bike scores from <a href="https://www.walkscore.com/" target="_blank">https://www.walkscore.com/</a> to append onto the data.</p>
@@ -31,7 +30,6 @@ title: "Pittsburgh Neighborhood Zillow Tracker Methodology"
     
     <div>
       <h2>Cleaning the Data</h2>
-      <br>
       <p>Once the data was pulled, it then needed to be cleaned.  There were some observations missing suburb, which were all Wilkinsburg.  Because I was not looking at Wilkinsburg, these could be dropped.  I kept only suburbs in my area that would be somewhere I would live - Edgewood, Highland Park, Point Breeze, Regent Square, Squirrel Hill North, Squirrel Hill South, Swisshelm Park, and (part of) Swissvale.  The longitude could not be missing, and to carve off the part of Swissvale I wanted to exclude, I set longitude <= -79.885.</p>
       <br>
       <p>Sometimes units differed between properties, so these were converted to standard units.  For example, converting some properties reported in acres to square feet.  Additionally, indicator variables needed to be made for variables.  For example, indicator variabes were created for different flooring types listed in the flooring field pulled from Zillow.</p>
