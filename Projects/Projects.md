@@ -13,7 +13,7 @@ Below is a list of all my GitHub projects on the site.
 
 Having been tracking my Spotify streaming data since October 2015, I use Spotify's Audio features to cluster songs I've listened to and view any patterns or changes in my listening behavior.
 
-<br\>
+<br/>
 
 [2018 House Forecast](https://scottonestak.github.io/Projects/2018_House_Forecast/2018_House_Forecast.html)
 
