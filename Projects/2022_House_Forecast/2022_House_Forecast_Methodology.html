@@ -1,0 +1,63 @@
+---
+layout: default
+title: "2022 House Forecast"
+---
+<html>
+  <head>
+    <title>2022 House Forecast</title>
+  </head>
+  
+  <body>
+    <h1>2022 House Forecasting Methodology</h1>
+    
+    <div>
+      <p>The model can be found <a href="https://scottonestak.github.io/Projects/2022_House_Forecast/2022_House_Forecast.html">here</a>.</p>
+      <p>The GitHub repository can be found <a href="https://github.com/ScottOnestak/2022_House_Predict">here</a>.</p>
+    </div>
+  
+    <br>
+    
+    <div>
+      <p><i>Strap in folks.  This is gonna be a long one.</i></p>
+    </div>
+    
+    <br>
+    
+    <h2>Building Congressional Districts</h2>
+    
+    <br>
+    
+    <div>
+      <p>The 2022 House of Representatives forecast came with a new callenge - redistricting.  Because the census reassigns the number of congressional districts every 10 years and states redraw their boundries, I needed to get previous election results and census data for these new districts.</p>
+      <p>In order to accomplish this, I pulled the shapefiles for each state's new map from the state's website.  I pulled demographic information from the census using the acs package in R at the block group level.  Previous election results were pulled at the precinct level.  From there, I mapped each block and precinct to the congressional districts, dividing the census or election results proportionally based on land area if a block group or precinct overlapped more than one congressional district.  (It sounds easy in retrospect, but boy did this take the most time to execute.)</p>
+      <p>From the historical election results, I was able to build one of the most important metrics for the model.  This is what I would call "leans."  A lean is a very simple but powerful calculation.  It is the GOP's two-party vote share minus the Dem's two-party vote share compared to the national two-party vote share for the previous presidential election.  As a formula, lean = (GOP_CD / (GOP_CD + DEM_CD)) - (DEM_CD / (GOP_CD + DEM_CD)) - (GOP_US / (GOP_US + DEM_US)) - (DEM_US / (GOP_US + DEM_US)).  This metric is extremely powerful.  For example, if a lean is equal to 5, this allows you to say, "In a neutral environment (when the generic ballot is tied nationally), this congressional district will vote for the GOP by 5 percentage points."  This value will come back a lot later.</p>
+    </div>
+  
+    <br>
+    
+    <h2>Building Pollster Ratings</h2>
+    
+    <br>
+    
+    <div>
+      <p>In my 2018 model, I just used FiveThirtyEight's pollster ratings.  However, everything in 2022 was built from scratch.  In order to build my own pollster ratings, I used FiveThirtyEight's dataset for all the polls conducted within three weeks of an election.  In theory, these polls should be the best conducted by the pollsters since they are directly before the election.</p>
+      <p>To calculate the ratings, I first controlled for the type of election, partisanship, sampling error, and the number of days to the election.  In short, Presidential elections should be easier to poll than House races.  Partisan polls should have stronger bias than nonpartisan polls.  Polls with larger sample sizes should be more accurate than those with smaller sample sizes.  And, polls conducted the closest to the election should be more accurate than those conducted weeks out.</p>
+      <p>After controlling for these factors, it became a trial-and-error optimization problem.  I tried many, many ways of calculating pollster ratings.  In the end, the most robust performer was what I called the "Advanced - Multiplicitive" method, where a poll is weighted as a multiplicitive function of time, sample size, and the pollster's advanced score.  This had a cutoff of at least 20 polls (or 5 polls for high performing pollsters), a lookback of 6 years, and bias adjustments for partisan pollsters.  Pollsters without a score based on this were replaced with the score of the worst pollster for that year.</p>
+    </div>
+  
+    <br>
+    
+    <h2>Calculating the Generic Ballot</h2>
+    
+    <div>
+      <p>Again (and you'll see this is a pattern), this turned into a trial-and-error optimization problem.  When using the pollster scores, the best weighting of the generic ballot occurred when:</p>
+      <p>   (1) Only the most recent poll from each pollster is kept - so one pollster does not get an outstanding amount of weight on the overall calculation.</p>
+      <p>   (2) Only keep likely voter (LV) and registered voter (RV) polls.  If a pollster has both of these numbers, keep only the LV poll.</p>
+      <p>   (3) RV polls should be shifted 1.5% towards the GOP.  There is historical precedent that RV to LV polls shift the overall percent by about this much.</p>
+      <br>
+      <p>With these rules, the best performing weighing methodology is the Advanced - Multiplicitive score.  Below, are the historical performances for predicted and actual generic ballots with a 95% confidence interval.</p>
+    </div>
+  
+  </body>
+</html>
+  
