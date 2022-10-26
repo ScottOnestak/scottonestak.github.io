@@ -57,10 +57,36 @@ title: "2022 House Forecast"
       <br>
       <p>With these rules, the best performing weighing methodology is the Advanced - Multiplicitive score.  Below, are the historical performances for predicted and actual generic ballots with a 95% confidence interval.</p>
       <img src="Images/Generic_Ballot_DEM_Historic_Performance.png" alt="Dem Historic Generic Ballot Performance">
+      <br>
       <img src="Images/Generic_Ballot_GOP_Historic_Performance.png" alt="GOP Historic Generic Ballot Performance">
+      <br>
       <p>One thing I find of importance you can see in the charts is that 2020 was egregiously bad for two reasons.  The first of which is that we haven't had that large of a miss since 2014.  However, what makess 2020's miss so much worse than 2014's is how confident it was.  The 95% confidence intervals were much larger in 2014, meaning there was a large variety of predictions.  2020's confidence intervals are the smallest by quite a bit, meaning pollsters were all confidently saying the same thing.  Was 2020's prediction within the 95% confidence interval?  Yes.  Is it one of the largest misses in modern politics?  Also yes.</p>
     </div>
+    
+    <br>
+    
+    <h2>Determining Weighting for House Polls vs the Baseline</h2>
+    
+    <br>
+    
+    <div>
+      <p>Now, we get to the most trick optimization problem of all.  How to weight the baseline (national environment + candidates) vs the individual polls for that House race.</p>
+      <p>Let's start with how each are calculated.  The baseline is a simple metric.  We take the congressional district's lean + the generic ballot + an incumbent's previous performance relative to the congressional district's lean to get the baseline.  For example, if the lean of a district is 5 (like our previous example) and the generic ballot is an R+3 (roughly where it is now) and the incumbent's previous performance relative to the congressional district was R+1, then we would expect this Republican incumbent to win this race by 9 points.  If there is no incumbent, then the calculation is just the lean + the generic ballot.</p>
+      <p>Polling is handled a little differently here than before.  Most congressional races are not competitive, and while we would like every number to be as accurate as possible, I really don't care if the calculation misses an R+20 or D+20 Congressional District by 5% if it means that I can make an R+1 or a D+1 Congressional District's prediction more accurate.  Therefore, we are only performing the optimization on Congressional Districts where final result is within 10%.  The optimized way to weight these polls has a time decay of e^(-0.01*days_to_election) and an additional 0.2 penalty for partisan polls in the weighting methodology discussed previously.</p>
+      <p>With these two metrics (baseline and polls), we can then optimize for how to weight these two numbers together.  The optimized poll weight is by the sum of the total weight for the congressional district.  More accurate pollsters get higher weights and more polls get more weight, so a higher total weight means there are either a lot of polls or a few accurate polls.  The poll weight is equal to .90*e^(-0.15*(min(total_weight,3.5)-3.5)).  In layman's terms, if the total weight is greater than or equal to 3.5, the poll's weight will be 90% and the baseline will be 10%.  As the total weight is lower than 3.5, the poll's weight will decrease with the function down to 0% and the baseline will increase with the function up to 100%.</p>
+      <p>Below you can see the R^2 values for all congressional districts and the most competitive ones.  The reason I optimized for the competitive districts over all is because all congressional districtions performs quite well just with the baseline.  However, the competitive districts actually perform quite poorly with just the baseline. In fact, the R^2 is effectively 0, meaning none of the variation in the election results has been explained by the baseline.  These competitive districts really rely on polling to explain the election results.  With polling, the R^2 = 0.54, meaning 54% of the election results can be explained with the weighting system for these competitive districts.</p>
+      <br>
+      <img src="Images/All_CDs.png" alt="R^2 for all Congressional Districts">
+      <br>
+      <img src="Images/Comp_CDs.png" alt="R^2 for competitive Congressional Districts">
+      <br>
+    </div>
   
+    <h2>Building the Scenarios</h2>
+    
+    <div>
+      
+    </div>
   </body>
 </html>
   
