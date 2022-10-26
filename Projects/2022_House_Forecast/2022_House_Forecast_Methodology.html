@@ -82,10 +82,43 @@ title: "2022 House Forecast"
       <br>
     </div>
   
+    <br>
+    
     <h2>Building the Scenarios</h2>
     
     <div>
-      
+      <p>For building the model, I could use the actual results from the past elections.  However, for predicting the upcoming one, I won't know if the numbers are accurate until after the election.  Because metrics like the generic ballot have a confidence interval built around them, I build scenarios by sampling from the normal distribution around these metrics to get 10,000 simulated scenarios.</p>
+      <p>The first and most important sampling is of the generic ballot.  I then assume the results in the individual congressional races will be correlated with, but not exactly the same as the generic ballot.  Therefore, the randomness is introduced as the sampling for the congressional district's polling is centered around this new generic ballot assumption.</p>
+      <p>Finally, undecideds need to be assigned for these simulations.  Based on historical precedence, the GOP has picked up over 60% of undecideds when they were out of power.  (62% in 2010 and 74% in 2014.)  As to not overdo it, I set an expectation of 60% of undecideds breaking towards the GOP, and once again sample a distribution centered around this value.  If anything, I think I may be underestimating the GOP here.  Democrats picked up 70% of undecideds when they were out of power in 2018.</p>
+      <p>There are a few practical implications that need to be discussed with the undecideds assumption.  If the generic ballot has a lot of undecideds, the prediction will get less confidence in the final generic ballot number when the election occurs.  Therefore, the overall probability of either party taking the majority will move close to a 50%-50% tossup.  If there are few undecides, then there is more certainty in the outcome of the race, and the prediction will move towards the poles.  It also works this same way in individual congressional races.  Therefore, a larger share of undecideds results in a less certain outcome.  This is a feature, not a bug, of the model that was the major improvement I wanted to make compared to my 2018 model.</p>
+      <p>After all this, I run my scenarios through a gradient boosting machine I built using the training data, which contain actuals.  The probability of taking the majority for the GOP is calculated as the number of scenarios out of the 10,000 that they get 218 seats or more.  (The Democrat probability is 100% - the GOP probability.)  The probability for each individual house seat is how many times the Republican or Democratic candidate wins out of those 10,000 simulations.  Even though the model might say a probability is 0 for a candidate, nothing is every 0 (unless there isn't an opponent).  This just means that the probability is so low, that with rounding, it is 0.</p>
+    </div>
+    
+    <br>
+    
+    <h2>So... What Keeps Me Up at Night?</h2>
+    <div>
+      <p>My biggest concern with the 2022 model (and not just mine, but all of them) is that there has been so few individual Congressional District polls conducted this cycle as compared to prior ones.  2022 has less than half the number of polls conducted in 2018 currently.  That means the possibility for a wider variety of results come election night is much higher.  Maybe we'll get some more polls now that we're getting very close to the election.  (These polls would also probably get a higher weight and move the needle more since the time weight would be higher for these.)  However, I'm doubtful.</p>
+      <p>There's once congressional district that vexes me - ME-02.  If you are unaware, Maine uses an instant runoff system, meaning that if the candidate you vote for does not end up in the top 2, your vote is allocated up to this top 2 by the preferences you mark on the ballot.  Alaska has also implemented this system.  However, unlike Alaska, the polls do not report these preferences, and it makes it quite difficult to calculate how these votes will flow.  As a result, I think I'm probably overestimating the Republican's chance in this race currently.  ME-01 is not a competitive district, so it doesn't really effect the prediction there.</p>
+    </div>
+    
+    <br>
+    
+    <h2>Surprised by any predictions</h2>
+    
+    <div>
+      <p>In short, yes.  Yes, I am.</p>
+      <p>My model has some interesting choices in NY compared to FiveThirtyEight and DecisionDesk.  A very bold prediction it has is favoring the Republican in NY-03.  In addition, it has a string of Tossups going from NY-17, NY-18, NY-19, and NY-22.  The most interesting of these is NY-17, where Sean Patrick Malloney, chair of the DCCC, looks to be in a very close race.  I have not seen any other forecaster have this race as close as I do, but it has started to become a <a href="https://twitter.com/Redistrict/status/1584523113215102980?s=20&t=Ius-7AO85FiBC_23NXELpg" target=_blank>pretty big story</a> that Malloney could be in trouble.  Maybe my model is picking up on a signal others are not.  Maybe it's noise.</p>
+      <p>My model is also much more confident in south Texas than others.  TX-15, TX-28, and TX-34 (Mayra Flores) are all locked in very close races according to my model.</p>
+      <p>Some GOP underperformers compared to other models are IA-03, VA-02, PA-07, AZ-01, and OH-01.  All except, AZ-01 are pretty competitive.  I honestly have no idea what's going on with AZ-01 and disagree with the model.  Looks like a pretty safe GOP seat to me.</p>
+    </div>
+    
+    <br>
+    
+    <h2>Final Thoughts</h2>
+    
+    <div>
+      <p>Ultimately, this has been a lot of work.  Compared to 2018, this wasn't an upgrade; it was a whole new model.  Every metric was built from scratch.  I was able to make imporovements I had wanted to make after 2018, and I think it shows just how far along my skills have come.  Looking forward though, I think the model could be improved by incorporated an elasticity score for the Congressional Districts and potentially building some sort of similarity score so that when a House poll happens in one Congressional District that it informs and improves the prediction for similar Congressional Districts.</p>
     </div>
   </body>
 </html>
