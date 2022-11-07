@@ -54,39 +54,27 @@ title: "2022 House Forecast"
     <br>
     <br>
     
+    <h2>Model Overview</h2>
+    
+    <div>
+      <p>I'm extremely pleased with how the model performs.  It's extremely more robust than the 2018 model.  With that being said, I think there may be a few blind spots that will need work for the next iteration.  Models aren't infalliable.  They're merely simplifications of the real world used in an attempt to derive meaning about the real world.  I'd like to walk through some specific cases where these simplifications may not be representative of the real world, and as I think you'll see, these blind spots are generally a wash because they work both for and against the parties in different situations.</p>
+      <br>
+      <p><b>ME-02</b>: We'll start with a congressional district that vexed me in 2018 and I believe continues to do so.  This is a unique case.  Maine, like Alaska, has rank choice voting, meaning that if the candidate you vote for as your first choice does not make it as one of the top two candidates, they go down your list of preferences until they get to a candidate in that top two.  However, unlike Alaska where they provide polling results based on these preferences, Maine does not.  As a result, there’s an Independent candidate garnering about 9% of the vote, but there isn’t polling information to say who those 9% of voters will support next.  My best guess is that the model is currently underestimating the incumbent Democratic candidate’s chances currently, with the model placing this as a Likely GOP district when it should probably be a Tossup.  (ME-01 is not really effected because it’s not a competitive district.)</p>
+      <br>
+      <p><b>VA-02</b>: This could also be applicable to districts like NV-04 and WA-08, but I'm going to use VA-02 as the poster child.  The incumbent Democrat is sitting on a boatload of money - so much so that she could fund her entire race many times over.  The GOP candidate is not underfunded and actually has a considerable amount of cash for a House race, but comparatively, it's nowhere close to the Democrat.  I've put in some (vey high) caps on the financial data and used a logarithmic transformation to reflect the diminishing marginal return of cash in the race.  However, I would like to further study and address this in future iterations of the model.  This district is currently rated as Lean Democrat; it's probably close to a 50-50 Tossup.</p>
+      <br>
+      <p><b>TX-15, TX-28, TX-34</b>: These are Rio Grande Valley districts where the GOP are trying to flip three historically Democratic districts.  In fact, Mayra Flores (TX-34) has already done this in the special election earlier this year, but that was under the previous congressional district lines.  This new district will be more favorable to the Democrat.  My model is more bullish on these Republican Latina candidates than other models because I use the previous Presidential results when calculating my Leans while most use the previous two Presidential results.  I found one year to be more accurate in the aggregate.  Because this area of the country moved so far to the right in 2020, it will be a test to see if that pattern sticks.  It's a bold bet by my model, and while I think all three have a good chance of winning on Tuesday, these districts should probably be closer to Tossup and Lean Republican rather than Lean and Likely Republican.</p>
+      <br>
+      <p>There are other districts that people might take some skepticism on.  However, I believe the highlighted examples above illustrate where my model might have some blind spots when the results start to roll in on Tuesday.</p>
+    </div>
+    
+    
+    
+    
     <a href="https://www.270towin.com/2022-house-election/2M3l2P5"><img src="https://www.270towin.com/2022-house-images/2M3l2P5.png" width="800"></a>
     
-    <br>
-    <br>
     
-    <div>
-      <p>Below are a list of the most competitive districts that are currently rated as Tossups.</p>
-    </div>
     
-    <br>
-    
-    <div class='tableauPlaceholder' id='viz1666755452745' style='position: relative'><noscript><a href='#'><img alt='2022 Competitive Districts ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;20&#47;2022CompetitiveDistricts&#47;2022CompetitiveDistricts&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='2022CompetitiveDistricts&#47;2022CompetitiveDistricts' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;20&#47;2022CompetitiveDistricts&#47;2022CompetitiveDistricts&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1666755452745');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-    
-    <br>
-    <br>
-    
-    <div>
-      <p>The GOP also currently leads on the generic ballot.  Based on previous midterms where the GOP was out of power, we should expect the GOP to win undecided voters on top of this current edge.  In 2010, undecideds split 62% - 38% for the GOP based on my final generic ballot calculation the day before the vote.  In 2014, undecideds split 74% - 26% for the GOP.</p>
-    </div>
-    
-    <br>
-    
-    <div class='tableauPlaceholder' id='viz1666755716747' style='position: relative'><noscript><a href='#'><img alt='Generic Ballot ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;20&#47;2022GenericBallot_16667454653090&#47;2022GenericBallot&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='2022GenericBallot_16667454653090&#47;2022GenericBallot' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;20&#47;2022GenericBallot_16667454653090&#47;2022GenericBallot&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1666755716747');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-    
-    <br>
-    
-    <div>
-      <p>Below is the distribution of expected seats.  Currently, the average prediction is 233 GOP - 202 Dem seats.</p>
-    </div>
-    
-    <br>
-    
-    <div class='tableauPlaceholder' id='viz1667002885338' style='position: relative'><noscript><a href='#'><img alt='2022 House Seat Distribution Dashboard ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;20&#47;2022HouseSeatDistribution&#47;2022HouseSeatDistributionDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='2022HouseSeatDistribution&#47;2022HouseSeatDistributionDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;20&#47;2022HouseSeatDistribution&#47;2022HouseSeatDistributionDashboard&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1667002885338');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='420px';vizElement.style.maxWidth='800px';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='420px';vizElement.style.maxWidth='800px';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
     
     <br>
   </body>
