@@ -25,7 +25,7 @@ Having been tracking my Spotify streaming data since October 2015, I use Spotify
 
 Using the current local and property tax rates for Allegheny County municipalities as well as the current Common Level Ratio, I visualize how the municipalities collect tax revenue as well as build a tool to help visualize the total local + property annual tax given a person's income and estimated home purchase price.  I hope this can help individuals make more informed home purchasing decision in the Pittsburgh area.
 
-<br/> 
+<br/>
 
 [Pittsburgh Neighborhood Zillow Tracker](https://scottonestak.github.io/Projects/Pittsburgh_Zillow_Tracker/Pittsburgh_Zillow_Tracker.html)
 
