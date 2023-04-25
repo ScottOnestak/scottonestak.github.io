@@ -21,6 +21,12 @@ Having been tracking my Spotify streaming data since October 2015, I use Spotify
 
 <br/>
 
+[Allegheny County Tax Map](https://scottonestak.github.io/Projects/Allegheny_Tax_Map/Allegheny_Tax_Map.html)
+
+Using the current local and property tax rates for Allegheny County municipalities as well as the current Common Level Ratio, I visualize how the municipalities collect tax revenue as well as build a tool to help visualize the total local + property annual tax given a person's income and estimated home purchase price.  I hope this can help individuals make more informed home purchasing decision in the Pittsburgh area.
+
+<br/>
+
 [Pittsburgh Neighborhood Zillow Tracker](https://scottonestak.github.io/Projects/Pittsburgh_Zillow_Tracker/Pittsburgh_Zillow_Tracker.html)
 
 Scraping Zillow's data for sold houses, I used this information to examine patterns as well as construct a gradient boosting machine that can be used to predict a house's current sales value as well as view the effects of the most important features in the model.  Some of these most important variables include suburb, living area, and bathrooms.
