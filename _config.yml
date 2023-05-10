@@ -12,4 +12,8 @@ minima:
             twitter: ScottOnestak
             github: ScottOnestak
 google_analytics: UA-236997201-1
-google_analytics_4: G-L8GWFM8CEL
+analytics:
+  provider               : "google-gtag"
+  google:
+    measurement_id          : "G-L8GWFM8CEL"
+    anonymize_ip         : # true, false (default)
