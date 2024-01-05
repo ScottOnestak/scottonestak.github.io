@@ -9,6 +9,12 @@ Below is a list of all my GitHub projects on the site.
 
 <br/>
 
+[The Economy](https://scottonestak.github.io/Projects/The_Economy/The_Economy.html)
+
+Using FRED data, try to understand the workings of the macroeconomy better through projects such as recession prediction.  This is an ongoing project.
+
+<br/>
+
 [2022 House Forecast](https://scottonestak.github.io/Projects/2022_House_Forecast/2022_House_Forecast.html)
 
 Build a forecasting model to predict the results of the 2022 Midterm Election for the United State House of Representatives using variables such as polling, previous election results, financials, demographics from the census, and shapefiles.  This isn't just an improvement on the 2018 House Forecast; it's a whole new model.
