@@ -1,0 +1,66 @@
+---
+layout: default
+title: "The Economy: Recession Forecasting Methodology"
+---
+
+<html>
+  <head>
+    <title>The Economy: Recession Forecasting Methodology</title>
+  </head>
+  <body>
+    <h1>The Economy</h1>
+    
+    <div>
+      <br>
+      <p>The overall economic summary can be found <a href="https://scottonestak.github.io/Projects/The_Economy/The Economy.html">here</a>.</p>
+      <p>All code can be found <a href="https://github.com/ScottOnestak/The_Economy">here</a>.</p> 
+      <br>
+    </div>
+    
+    <h2>Data Collection</h2>
+
+    <div>
+      <br>
+      <p>All data is collected from <a href="https://fred.stlouisfed.org/" target=_blank>FRED</a>, a wealth of economic data compiled and maintained by the Federal Reserve of St. Louis.  This was done using an API in R.</p>
+      <br>
+      <p>To build the model, the data was pulled monthly for variables such as treasury yields, unemployment, consumer sentiment, the Chicago Fed's national financial conditions index, and other variables that I thought would occur simultaneously as or lead a recession.  June of 1976 was selected as the starting point for the data because this was how far back the 2-year treasury bill has data for.</p>
+      <br>
+      <p>After pulling the data, measures that only occur quarterly were filled in on a monthly basis.  Spreads between treasury bills were calculated.  Changes in values were also calculated for some variables to be used in the model.  Finally, offseting the variables (such as a 12 month lead on a treasury yield spread) were joined to the dataset.  This was done because the inversion of treasury yield spreads often lead a recession.</p>
+      <br>
+    </div>
+
+    <h2>Model Building</h2>
+
+    <div>
+      <br>
+      <p>Many different time periods were used to try to build the model - currently a recession, a recession within 3 months, a recession within 6 months, a recession within a year.  All followed the same process but eneded with slightly different configurations of variable importance and hyperparameters.  Using the monthly data, hyperparameters were tuned on a gradient boosting machine model.  These hyperparameters included the column sample rate, max depth, min rows, min split improvement, and number of trees.  The hyperparameters that optimized the model best were selected.</p>
+      <br>
+      <p>Backtesting was also done on the model to ensure that it was robust to unseen data.  To perform this, the model was tested only using data up to August 2004, prior to both the Great Recession that started in 2008 and the recession caused by Covid in 2020.  The results of that test compared to using all the data to train on can be seen below.</p>
+      <br>
+      <div class='tableauPlaceholder' id='viz1704481058127' style='position: relative'><noscript><a href='#'><img alt='Recession Probability (12 Months): All Data v. Prior to 2004-08-01 Only ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Re&#47;RecessionProbability12MonthsAllDatav_Priorto2004-08-01Only&#47;RecessionProbability12MonthsAllDatav_Priorto2004-08-01Only&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='RecessionProbability12MonthsAllDatav_Priorto2004-08-01Only&#47;RecessionProbability12MonthsAllDatav_Priorto2004-08-01Only' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Re&#47;RecessionProbability12MonthsAllDatav_Priorto2004-08-01Only&#47;RecessionProbability12MonthsAllDatav_Priorto2004-08-01Only&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1704481058127');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+      <br>
+      <p>From evaluating performance, the model looked to become more increasingly unstable as the window of predicting a recession becomes smaller.  I.e. It is much harder to predict a recession within a 3 month time window compared to a 12 month time window.  Because of this, I find it most appropriate to look at the probability of a recession within 12 months, which is a fairly stable model overall.  Below, you can see the 20 most important variables in the model to predict a recession within the next 12 months.  Unsurprisingly, a lot of them are leading treasury spread variables.</p>
+      <br>
+      <div class='tableauPlaceholder' id='viz1704481806926' style='position: relative'><noscript><a href='#'><img alt='Recession Model 12 Months: Variable Importance ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Re&#47;RecessionModel12MonthsVariableImportance&#47;RecessionModel12MonthsVariableImportance&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='RecessionModel12MonthsVariableImportance&#47;RecessionModel12MonthsVariableImportance' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Re&#47;RecessionModel12MonthsVariableImportance&#47;RecessionModel12MonthsVariableImportance&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1704481806926');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+      <br>
+      <p>It's important to keep in mind that economists will not even declare there was a recession until after the recession has already occurred.  Trying to pinpoint the exact timing of a recession before it even happens is a difficult endevour - much moreso with additional issues that will be discussed below.</p>
+    </div>
+
+    <h2>Current Model Prediction</h2>
+
+    <div>
+      <br>
+      <p>The model is run weekly to predict the current probability of a recession.  The most recent values for each of the FRED variables are fed into the model.  The model is only trained on data a year or older than the current date.  This is because economists only determine recessions after the fact.  Therefore, FRED will not have a recession indicator until after a recession has occurred, and the recent data should not be used for training.</p>
+    </div>
+
+    <h2>What Issues Can There Be With the Prediction?</h2>
+
+    <div>
+      <p>When trying to predict a future event in economics, unknown unknowns typically pose a frightning risk.  Economics - especially macroeconomics - is not a science like chemistry or even psychology, where experiments can be run to determine the outcome of a scenario.  It would simply be unethical for economists to run experiments to try to create recessions because people's livelihoods depend upon the economy.  Therefore, it is often thought there is a rule in economics until it is broken, in which case it is either revised or thrown out altogether.  For example, prior to the Financial Crisis that started in late 2007, many banks were bundling risky mortgages loans and selling them to other financial institutions under the premise that the entire US housing market wouldn't collapse at the same time.  Up until that point in recent history, it had not.  Until it did.  Therefore, while the yield curve has been a reliable predictor of recessions in the past, it's important to take pause and think if something might be different this time.</p>
+      <br>
+      <p>Another challenge of using current data is that the most recent economic data is prone to revisions.  When outlets like the Bureau of Labor Statistics puts out its most recent unemployment rate, that is only an estimate.  The value can, and most likely will, be revised in the subsequent months.  Because of this, the data the model is being built off is actuals while many variables being fed into predicting the current probability of a recession are estimates - that could be revised up or down in the coming months.</p>
+      <br>
+    </div>
+    
+  </body> 
+</html>
